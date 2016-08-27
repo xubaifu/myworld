@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.baifu.dao.EditMapper">
+	<!-- 如果方法出啊如的参数值只有一个，在#｛｝中引用这个参数的话，写什么名称都可以，
+	但是一般情况下采用 接口中传参的名字-->
+	
+	<select id="loadArticleType" resultType="com.baifu.entity.NoteBook">
+		select t.cn_notebook_code,t.cn_notebook_name from cn_notebook t ORDER BY t.cn_notebook_name
+	</select>
+	<!-- 如果传入的参数是实体类或者是Map。则包含多个值， -->
+	<insert id="insertArticle" parameterType="com.baifu.entity.Note">
+		insert into cn_note values(
+			#{cn_note_id},
+			#{cn_notebook_code},
+			#{cn_user_id},
+			1,
+			#{cn_note_type_code},
+			#{cn_note_title},
+			#{cn_note_body},
+			#{cn_note_tag},
+			NOW(),
+			NOW(),
+			0
+		)
+	</insert>
+	<insert id="insertShareArticle" parameterType="com.baifu.entity.Note">
+		insert into cn_share values(
+			UUID(),
+			#{cn_note_title},
+			#{cn_note_tag},
+			#{cn_note_id}
+		)
+	</insert>
+</mapper>
