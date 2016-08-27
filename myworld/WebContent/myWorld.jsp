@@ -18,7 +18,6 @@
 		if(loginName == "null" || loginName == "" || loginName == null){
 			location.href="login.jsp";
 		}
-
 	</script>
 </head>
 <body>
