@@ -79,7 +79,7 @@
 			</div>
 		</div>
 
-		<div id="articleComment" style="margin-left: auto;margin-right: auto;width: 830px">
+		<div id="articleComment" class="commentDiv">
 			<div style="margin-bottom: 20px;" class="ui threaded comments" id="commentItems">
 				<div style="font-size: 2rem; padding-bottom: 10px; border-bottom: 1px solid #DFDFDF;" class="text">全部评论</div>
 				</div>
@@ -91,7 +91,7 @@
 								<!-- <label for="commentContent" class="commentContentLabel">Content</label> -->
 							</div>
 							<div >
-								<button type="button" class="btn btn-primary" onclick="">提交评论</button>
+								<button type="button" class="btn btn-primary" onclick="articleContentsObj.commentObj.addComment('')">提交评论</button>
 							</div>
 						</div>
 					</form>

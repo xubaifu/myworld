@@ -11,25 +11,26 @@
 			t.cn_user_id,
 			t.cn_user_name,
 			t.cn_parent_comment_id,
-			t.cn_comment_date,
+			date_format(t.cn_comment_date,'%Y-%c-%d %H:%i:%s') as cn_comment_date,
 			t.cn_content
 		FROM
 			cn_comment t
 		WHERE
 			t.cn_note_id = #{noteId} 
-		ORDER BY t.cn_comment_date
+		<!-- ORDER BY t.cn_comment_date -->
 	</select>
 	<insert id="addComment" parameterType="com.baifu.entity.Comment">
-		INSERT INTO cn_comment t
+		INSERT INTO cn_comment
 		VALUES
-			(		UUID();
-					t.cn_note_id = #{cn_note_id},
-					t.cn_user_id = #{cn_user_id},
-					t.cn_user_name = #{cn_user_name},
-					t.cn_parent_comment_id = #{cn_parent_comment_id},
-					t.cn_comment_date = #{cn_comment_date},
-					t.cn_content= #{cn_content}
+			(		UUID(),
+					#{cn_note_id},
+					#{cn_user_id},
+					#{cn_parent_comment_id},
+					#{cn_content},
+					#{cn_user_name},				
+					SYSDATE()			
 		)
+		
 	</insert>
 	
 </mapper>
