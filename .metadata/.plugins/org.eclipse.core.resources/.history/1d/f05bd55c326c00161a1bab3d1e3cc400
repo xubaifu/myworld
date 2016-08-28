@@ -1,0 +1,5 @@
+package com.baifu.entity;
+
+public class Comment {
+
+}

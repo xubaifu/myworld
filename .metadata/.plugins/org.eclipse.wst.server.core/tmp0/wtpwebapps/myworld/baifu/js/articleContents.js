@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	articleContentsObj.selectContentsFun();
+	articleContentsObj.commentObj.getComment();
 });
 //定义查询文章内容模块
 var articleContentsObj = {
@@ -16,7 +17,7 @@ var articleContentsObj = {
 		        async: true,
 		        dataType: "json",
 		        success: function(result){
-		        	console.log(result);
+		        	//console.log(result);
 		        	if(result.success){
 						//程序执行成功
 		        		var list = result.data;
@@ -127,5 +128,123 @@ var articleContentsObj = {
 					}
 		        }
 			});
-		}
+		},
+		//评论
+		commentObj : {
+			
+		},
+		
+};
+
+
+
+//添加评论
+articleContentsObj.commentObj.addComment = function(){
+	
+};
+//查询评论
+articleContentsObj.commentObj.getComment = function(){
+	var noteId = common.getURLParams("noteId");
+	$.ajax({
+        type: "POST",
+        url: basePath+"/comment/getComment.do",
+        data: {"noteId":noteId},
+        async: true,
+        dataType: "json",
+        success: function(result){
+        	console.log(result);
+        	if(result.success){
+        		//程序执行正确
+        		var list=result.data;
+        		if(list == null || list == "null"){
+        			alert("获取留言失败");
+        		}
+        		if(list.length ==0){
+        			$("#commentItems").append("暂无评论")
+        		}
+        		var arrComment = [];
+        		$(list).each(function(i){
+        			/*arrComment[i] = list[i];*/
+        			//第一层评论
+        			if(this.cn_parent_comment_id == 0){
+        				$("#commentItems").append(
+        						'<div class="comment">'+
+        						'	<a class="avatar"> <img src="baifu/common/comment/images/foot.png">'+
+	        					'	</a>'+
+	        					'	<div class="content-1 topStyle" id="'+this.cn_comment_id+'">'+
+	        					'		<a class="author"> '+this.cn_user_name+' </a>'+
+	        					'		<div class="metadata">'+
+	        					'			<span class="date"> '+this.cn_comment_date+' </span>'+
+	        					'		</div>'+
+	        					'		<div class="text">'+this.cn_content+' </div>'+
+	        					'		<div class="actions" >'+
+	        					'			<a selfid="1" href="javascript:void(0)" class="reply">回复</a>'+
+	        					'			<a href="javascript:void(0)" class="cancel" style="display: none;">取消回复</a>'+
+	        					'		</div>'+
+	        					'	</div>'+
+	        					'</div>');
+        				
+        				arrComment[i] = this.cn_comment_id;
+        				if(i==0){
+        					list.shift();
+        				}else{
+        					list.splice(i-1,1);
+        				}
+        			}
+        			
+        		});
+        		
+        		articleContentsObj.commentObj.appendComment(list,arrComment);
+        		/*console.log(JSON.stringify(arrComment));*/
+			}else{
+				//程序执行失败
+				alert("获取留言失败");
+			}
+        }
+	});
+};
+//递归调用
+//评论盖楼
+articleContentsObj.commentObj.appendComment =  function(list,arrComment){
+	var arrComment1 = [];
+	k = 0;
+	for(var j=0;j<arrComment.length;j++){
+		$(list).each(function(i){
+			//alert(arrComment[i])
+			if(this.cn_parent_comment_id == arrComment[j]){
+				$("#"+this.cn_parent_comment_id).after(
+						'<div class="comments"> '+
+						'	<div class="comment">'+
+						'		<a class="avatar"> <img src="baifu/common/comment/images/foot.png">'+
+    					'		</a>'+
+    					'		<div class="comments topStyle" id="'+this.cn_comment_id+'">'+
+    					'			<a class="author"> '+this.cn_user_name+' </a>'+
+    					'			<div class="metadata">'+
+    					'				<span class="date"> '+this.cn_comment_date+' </span>'+
+    					'			</div>'+
+    					'			<div class="text">'+this.cn_content+' </div>'+
+    					'			<div class="actions" >'+
+    					'				<a selfid="1" href="javascript:void(0)" class="reply">回复</a>'+
+    					'				<a href="javascript:void(0)" class="cancel" style="display: none;">取消回复</a>'+
+    					'			</div>'+
+    					'		</div>'+
+    					'	</div>'+
+    					'</div>');
+				arrComment1[k] = this.cn_comment_id;
+				k++;
+				if(i==0){
+					list.shift();
+				}else{
+					list.splice(i-1,1);
+				}
+				
+			}
+		});
+		
+	}
+	if(list.length == 0){
+		return;
+	}
+	console.log(JSON.stringify(list));
+	articleContentsObj.commentObj.appendComment(list,arrComment1);
 };

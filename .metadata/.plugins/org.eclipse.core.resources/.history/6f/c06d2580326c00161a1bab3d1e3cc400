@@ -1,0 +1,21 @@
+package com.baifu.entity;
+
+import java.io.Serializable;
+
+public class Comment implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -417031099856131957L;
+	
+	private String cn_comment_id;
+	private String cn_note_id;
+	private String cn_user_id;
+	private String cn_parent_comment_id;
+	private String cn_content;
+	private String cn_user_name;
+	private String cn_comment_date;
+
+
+}

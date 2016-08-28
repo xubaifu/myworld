@@ -1,0 +1,428 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>ShareOne-知识共享</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="baifu/common/bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="baifu/css/index.css"/>
+	<link rel="stylesheet" href="baifu/common/comment/css/semantic.css" type="text/css" />
+	<link rel="stylesheet" href="baifu/common/comment/css/zyComment.css" type="text/css" />
+    <script type="text/javascript" src="baifu/js/common/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="baifu/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="baifu/js/common/basePath.js"></script>
+	<script type="text/javascript" src="baifu/js/common/cookie.js"></script>
+	<script type="text/javascript" src="baifu/js/common/common.js"></script>
+	<script type="text/javascript">
+		var loginName = "<%=session.getAttribute("userName") %>";
+		var userId = "<%=session.getAttribute("userId") %>";
+		/* if(loginName == "null" || loginName == "" || loginName == null){
+			location.href="login.jsp";
+		} */
+	</script>
+	<style type="text/css" media="print, screen">  
+		label {
+		    font-weight: bold;
+		}
+		a {
+			font-family: Microsoft YaHei;
+		}
+		#articleComment {
+			width: 830px;
+			/* height: 1500px; */
+			/* overflow: auto; */
+		}
+</style> 
+</head>
+<body>
+<jsp:include page="header.html"></jsp:include>
+<div class="jumbotron masthead">
+
+		<div class="content">
+			<div class="tab-content">
+				<div class="title">
+					<span>
+						<span>文章类别:</span>
+						<span id="notebookType"></span>
+						<a target="_blank" href="" id="articleType"></a>
+					</span>
+				</div>
+				<div class="tab-pane fade in active">
+					<div class="kn_cloumn ">
+						<div class="kn_left w830px whitebk">
+							
+							<div class="title-author">
+								<div class="collectBtn">
+									<a href="javascript:articleContentsObj.collectArticleFun();">
+										<span id="collection" class="glyphicon glyphicon-heart" style="color: gray;"> 收藏</span>
+										<span id="myArticle" class="glyphicon glyphicon-star" style="display: none;color: red;"> 我的文章</span>
+									</a>
+								</div>
+								<br>
+								<span id="title" class="title-span">
+									
+								</span>
+								<br>
+								<div class="title-author-span">
+									<span style="float: left;"><strong>作者：</strong><span id="author">baifu</span></span>
+									<span style="float: none;"><strong>日期	：</strong><span id="update">2015-12-12</span></span>
+									<span style="float: right;"><strong>浏览量：</strong><span id="times">125</span></span>
+								</div>
+							</div>
+							<div id="contents" class="articleContents">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div id="articleComment">
+			<div style="margin-bottom: 20px;" class="ui threaded comments" id="commentItems">
+				<div style="font-size: 2rem; padding-bottom: 10px; border-bottom: 1px solid #DFDFDF;" class="text">大家的脚印</div>
+				<div class="comment" id="comment1">
+					<a class="avatar"> <img src="images/foot.png">
+					</a>
+					<div class="content ">
+						<a class="author"> 游客1 </a>
+						<div class="metadata">
+							<span class="date"> 2014-04-04 </span>
+						</div>
+						<div class="text">第一条评论</div>
+						<div class="actions">
+							<a selfid="1" href="javascript:void(0)" class="reply">回复</a>
+						</div>
+						
+					</div>
+				</div>
+				
+				<div id="commentFrom">
+				<form class="ui reply form" id="replyBoxAri">
+					<div class="ui large form ">
+						<div class="contentField field">
+							<textarea id="commentContent"></textarea>
+							<label for="commentContent" class="commentContentLabel">Content</label>
+						</div>
+						<div class="ui button teal submit labeled icon" id="submitComment">
+							<i class="icon edit"></i> 提交评论
+						</div>
+					</div>
+				</form>
+			</div>
+			</div>
+				
+		</div>
+
+
+
+
+
+
+
+
+
+
+	<!-- 	<div id="articleComment">
+			<div style="margin-bottom: 20px;" class="ui threaded comments"
+				id="commentItems">
+				<div
+					style="font-size: 2rem; padding-bottom: 10px; border-bottom: 1px solid #DFDFDF;"
+					class="text">大家的脚印</div>
+				<div class="comment" id="comment1">
+					<a class="avatar"> <img src="images/foot.png">
+					</a>
+					<div class="content ">
+						<a class="author"> 游客1 </a>
+						<div class="metadata">
+							<span class="date"> 2014-04-04 </span>
+						</div>
+						<div class="text">第一条评论</div>
+						<div class="actions">
+							<a selfid="1" href="javascript:void(0)" class="reply">回复</a>
+						</div>
+					</div>
+					<div class="comments" id="comments1">
+						<div class="comment" id="comment3">
+							<a class="avatar"> <img src="images/foot.png">
+							</a>
+							<div class="content topStyle">
+								<a class="author"> 站长 </a>
+								<div class="metadata">
+									<span class="date"> 2014-04-04 </span>
+								</div>
+								<div class="text">第一条评论的回复</div>
+								<div class="actions">
+									<a selfid="3" href="javascript:void(0)" class="reply">回复</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment" id="comment2">
+					<a class="avatar"> <img src="images/foot.png">
+					</a>
+					<div class="content topStyle">
+						<a class="author"> 游客2 </a>
+						<div class="metadata">
+							<span class="date"> 2014-04-04 </span>
+						</div>
+						<div class="text">第二条评论</div>
+						<div class="actions">
+							<a selfid="2" href="javascript:void(0)" class="reply">回复</a>
+						</div>
+					</div>
+					<div class="comments" id="comments2">
+						<div class="comment" id="comment4">
+							<a class="avatar"> <img src="images/foot.png">
+							</a>
+							<div class="content topStyle">
+								<a class="author"> 站长 </a>
+								<div class="metadata">
+									<span class="date"> 2014-04-04 </span>
+								</div>
+								<div class="text">第二条评论的回复</div>
+								<div class="actions">
+									<a selfid="4" href="javascript:void(0)" class="reply">回复</a>
+								</div>
+							</div>
+							<div class="comments" id="comments4">
+								<div class="comment" id="comment6">
+									<a class="avatar"> <img src="images/foot.png">
+									</a>
+									<div class="content topStyle">
+										<a class="author"> 游客2 </a>
+										<div class="metadata">
+											<span class="date"> 2014-04-04 </span>
+										</div>
+										<div class="text">第二条评论的回复的回复</div>
+										<div class="actions">
+											<a selfid="6" href="javascript:void(0)" class="reply">回复</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment" id="comment8">
+							<a class="avatar"> <img src="images/foot.png">
+							</a>
+							<div class="content topStyle">
+								<a class="author"> 站长 </a>
+								<div class="metadata">
+									<span class="date"> 2014-04-04 </span>
+								</div>
+								<div class="text">第二条评论的回复</div>
+								<div class="actions">
+									<a selfid="8" href="javascript:void(0)" class="reply">回复</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comment" id="comment5">
+					<a class="avatar"> <img src="images/foot.png">
+					</a>
+					<div class="content topStyle">
+						<a class="author"> 游客3 </a>
+						<div class="metadata">
+							<span class="date"> 2014-04-04 </span>
+						</div>
+						<div class="text">第三条评论</div>
+						<div class="actions">
+							<a selfid="5" href="javascript:void(0)" class="reply">回复</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="commentFrom">
+				<form class="ui reply form" id="replyBoxAri">
+					<div class="ui large form ">
+						<div class="contentField field">
+							<textarea id="commentContent"></textarea>
+							<label for="commentContent" class="commentContentLabel">Content</label>
+						</div>
+						<div class="ui button teal submit labeled icon" id="submitComment">
+							<i class="icon edit"></i> 提交评论
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- 	<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-touch-callout: none;
+	/* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;
+	/* prevent webkit from resizing text to fit */
+	-webkit-tap-highlight-color: rgba(210, 210, 210, 0.35);
+	/* make transparent link selection, adjust last value opacity 0 to 1.0 */
+	-webkit-user-select: none;
+	/* prevent copy paste, to allow, change 'none' to 'text' */
+}
+
+body {
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+ul,li {
+	list-style: none;
+}
+
+.ylcon {
+	width: 100%;
+	min-width: 320px;
+}
+
+.tit {
+	height: 26px;
+	line-height: 26px;
+	padding: 0px 15px;
+	position: relative;
+	font-size: 15px;
+	color: #aaa;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.story {
+	/* border-bottom: 1px dashed #cecece; */
+	padding: 0 15px 3px;
+	position: relative;
+}
+
+.story_t {
+	font-size: 1.2em;
+	color: rgba(0, 0, 0, 1);
+	padding-top: 5px;
+	padding-bottom: 2px;
+}
+
+.story_m {
+	color: rgba(110, 110, 110, 1);
+	line-height: 21px;
+	word-break: break-all;
+	word-wrap: break-word;
+	overflow: hidden;
+	font-size: 1.2em;
+	padding: 2px 0;
+}
+
+.story_time {
+	color: rgba(154, 154, 154, 1);
+	padding: 2px 0;
+}
+
+.story_hf {
+	background: rgb(245, 245, 245);
+	font-size: 1.2em;
+	border: 1px solid rgba(204, 204, 204, 0.2);
+	border-radius: 2px;
+	color: rgba(110, 110, 110, 1);
+	padding: 4px;
+	margin-bottom: 5px;
+}
+
+.opbtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+</style>
+			<div class="ylcon">
+				<p class="tit">所有留言</p>
+				<div id="messDivId">
+					<div class="story">
+						<div class="opbtn"></div>
+						<p class="story_t">怜星</p>
+						<p class="story_time">2015/07/12 20:48</p>
+						<p class="story_m">剑花烟雨:评论1</p>
+						<div class="story">
+							<p class="story_hf">剑花烟雨:回复评论1</p>
+							<div class="story">
+								<p class="story_hf">剑花烟雨:回复评论1</p>
+								<div class="story">
+									<span>aaa</span>
+									<span class="story_hf">剑花烟雨:回复评论1</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="story">
+							<p class="story_hf">剑花烟雨:回复评论1</p>
+						</div>
+						<div class="story">
+							<p class="story_hf">剑花烟雨:回复评论1</p>
+						</div>
+					</div>
+					<div class="story">
+						<div class="opbtn"></div>
+						<p class="story_t">怜星</p>
+						<p class="story_time">2015/07/12 20:48</p>
+						<p class="story_m">我想问最近最火的tfboys呢他们的八卦呢我想问最近最火的tfboys呢,他们的八卦呢我想问最近最火的tfboys呢？！他们的八卦呢？！</p>
+					</div>
+					<div class="story">
+						<div class="opbtn"></div>
+						<p class="story_t">怜星</p>
+						<p class="story_time">2015/07/12 20:48</p>
+						<p class="story_m">我想问最近最火的tfboys呢他们的八卦呢我想问最近最火的tfboys呢,他们的八卦呢我想问最近最火的tfboys呢？！他们的八卦呢？！</p>
+						<p class="story_hf">@剑花烟雨:的是相对无言眼波如流的默契的是相对无言眼波如流的默契的是相对无言眼波如流的默契的是相对无言眼波如流的默契的是相对无言眼波如流的默契的是相对无言眼波如流的默契</p>
+					</div>
+					
+					
+					
+				</div>
+			</div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<jsp:include page="fotter.html"></jsp:include>
+	</div>
+<script type="text/javascript" src="baifu/js/articleContents.js"></script>
+</body>
+</html>

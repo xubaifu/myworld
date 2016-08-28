@@ -1,0 +1,6 @@
+package com.baifu.dao;
+
+public interface CommentMapper {
+	//添加评论
+	addComment(Comment comment);
+}

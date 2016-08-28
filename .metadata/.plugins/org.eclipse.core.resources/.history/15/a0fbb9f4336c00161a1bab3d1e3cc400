@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.baifu.dao.CommentMapper">
+	<!-- 根据更新时间 -->
+	<select id="getComment" resultType="com.baifu.entity.Comment" parameterType="string">
+		SELECT
+			t.cn_comment_id,
+			t.cn_note_id,
+			t.cn_user_id,
+			t.cn_user_name,
+			t.cn_parent_comment_id,
+			t.cn_comment_date,
+			t.cn_content
+		FROM
+			cn_comment t
+		WHERE
+			t.cn_note_id = #{noteId} 
+	</select>
+	<insert id="addComment" parameterType="com.baifu.entity.Comment"></insert>
+	
+</mapper>
