@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.baifu.dao.AllShareMapper">
+	<!-- 如果方法出啊如的参数值只有一个，在#｛｝中引用这个参数的话，写什么名称都可以，
+	但是一般情况下采用 接口中传参的名字-->
+	<!-- 根据更新时间推荐 -->
+	<select id="findShareNoteByDate" resultType="com.baifu.entity.Note" parameterType="hashmap">
+		SELECT
+				tt.cn_note_id,
+				tt.cn_note_title,
+				date_format(tt.cn_note_last_modify_time,'%Y-%c-%d') as cn_note_last_modify_time,
+				tt.cn_note_times,
+				tt.cn_note_body,
+				tt.cn_notebook_name,
+				tt.cn_user_name
+		FROM
+			cn_share t
+		LEFT JOIN (
+			SELECT
+				t1.cn_note_id,
+				t1.cn_note_title,
+				t1.cn_note_last_modify_time,
+				t1.cn_note_times,
+				t1.cn_note_body,
+				t2.cn_notebook_name,
+				t3.cn_user_name
+			FROM
+				cn_note t1
+			LEFT JOIN cn_notebook t2 ON t1.cn_notebook_code = t2.cn_notebook_code
+			LEFT JOIN cn_user t3 ON t1.cn_user_id = t3.cn_user_id
+		) tt ON t.cn_note_id = tt.cn_note_id
+		where tt.cn_notebook_name = #{noteType}
+		order by tt.cn_note_last_modify_time DESC
+		limit #{begin},#{pageSize}
+	</select>
+	<!-- 根据访问数量推荐 -->
+	<select id="findShareNoteByTimes" resultType="com.baifu.entity.Note" parameterType="hashmap">
+		SELECT
+				tt.cn_note_id,
+				tt.cn_note_title,
+				date_format(tt.cn_note_last_modify_time,'%Y-%c-%d') as cn_note_last_modify_time,
+				tt.cn_note_times,
+				tt.cn_note_body,
+				tt.cn_notebook_name,
+				tt.cn_user_name
+		FROM
+			cn_share t
+		LEFT JOIN (
+			SELECT
+				t1.cn_note_id,
+				t1.cn_note_title,
+				t1.cn_note_last_modify_time,
+				t1.cn_note_times,
+				t1.cn_note_body,
+				t2.cn_notebook_name,
+				t3.cn_user_name
+			FROM
+				cn_note t1
+			LEFT JOIN cn_notebook t2 ON t1.cn_notebook_code = t2.cn_notebook_code
+			LEFT JOIN cn_user t3 ON t1.cn_user_id = t3.cn_user_id
+		) tt ON t.cn_note_id = tt.cn_note_id
+		where tt.cn_notebook_name = #{noteType}
+		order by tt.cn_note_times DESC
+		limit #{begin},#{pageSize}
+	</select>
+</mapper>
