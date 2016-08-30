@@ -1,0 +1,12 @@
+package com.baifu.dao;
+
+import com.baifu.entity.Comment;
+import java.util.List;
+
+@MyBatisRepository
+public abstract interface CommentMapper
+{
+  public abstract void addComment(Comment paramComment);
+
+  public abstract List<Comment> getComment(String paramString);
+}

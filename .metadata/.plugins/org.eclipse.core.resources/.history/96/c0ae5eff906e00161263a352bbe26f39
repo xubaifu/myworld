@@ -1,0 +1,5 @@
+package com.baifu.service;
+
+public class CommentService {
+
+}

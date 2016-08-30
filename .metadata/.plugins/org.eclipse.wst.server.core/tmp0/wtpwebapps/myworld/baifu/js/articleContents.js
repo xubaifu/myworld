@@ -179,7 +179,7 @@ articleContentsObj.commentObj.addComment = function(id){
 					$("#noComment").remove();
 					articleContentsObj.commentObj.getComment();
 					$("#commentFrom").show();
-					$("#commentFrom #commentContent").val("")
+					$("#commentFrom #commentContent").val("");
 				}else{
 					alert("留言失败");
 				}

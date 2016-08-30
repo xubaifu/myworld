@@ -1,0 +1,5 @@
+package com.baifu.web;
+
+public class CommentController {
+
+}

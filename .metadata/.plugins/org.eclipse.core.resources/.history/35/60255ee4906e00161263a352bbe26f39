@@ -1,0 +1,5 @@
+package com.baifu.dao;
+
+public interface CommentMapper {
+
+}
