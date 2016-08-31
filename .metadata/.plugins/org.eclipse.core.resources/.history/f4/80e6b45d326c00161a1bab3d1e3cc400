@@ -1,7 +1,0 @@
-package com.baifu.entity;
-
-import java.io.Serializable;
-
-public class Comment implements Serializable {
-
-}

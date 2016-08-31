@@ -14,6 +14,9 @@
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
+	<section name="BuildPathsPropertyPage">
+		<item value="2" key="pageIndex"/>
+	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item value="587" key="DIALOG_WIDTH"/>
 		<item value="8" key="DIALOG_Y_ORIGIN"/>
