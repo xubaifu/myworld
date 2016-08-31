@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="baifu/js/index.js"></script>
 	<script type="text/javascript">
 		var loginName = "<%=session.getAttribute("userName") %>";
+		var userId = "<%=session.getAttribute("userId") %>";
 	</script>
 </head>
 <body>

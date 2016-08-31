@@ -87,7 +87,7 @@
         		and  tt.cn_note_tag like CONCAT('%','${searchContent}','%') 
         	</if>
         </if>
-		order by tt.cn_note_times DESC
+		order by tt.cn_note_last_modify_time DESC
 		limit #{begin},#{pageSize}
 	</select>
 	<!-- 查询用户的收藏 -->
@@ -138,7 +138,7 @@
         		and  tt.cn_note_tag like CONCAT('%','${searchContent}','%') 
         	</if>
         </if>
-		order by tt.cn_note_times DESC
+		order by t.cn_collect_date
 		limit #{begin},#{pageSize}
 	</select>
 	

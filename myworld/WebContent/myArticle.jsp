@@ -17,7 +17,7 @@
 		var loginName = "<%=session.getAttribute("userName") %>";
 		var userId = "<%=session.getAttribute("userId") %>";
 		if(loginName == "null" || loginName == "" || loginName == null){
-			location.href="login.jsp";
+			location.href="login.jsp?url="+window.location.href;
 		}
 	</script>
 </head>
