@@ -36,7 +36,7 @@
 				<div>
 					<span class="glyphicon glyphicon-home loadMore-left"> 我的知识库</span>
 					<!-- <span class="loadMore-left"></span> -->
-					<span class="loadMore-right"><a href="">更多>></a></span>
+					<span class="loadMore-right"><a href="myArticle.jsp?type=all">更多>></a></span>
 				</div>
 			</div>
 			<div class="caseList">
@@ -74,7 +74,7 @@
 				<div>
 					<span class="glyphicon glyphicon-th-list loadMore-left"> 我的分享</span>
 					<!-- <span class="loadMore-left">我的分享</span> -->
-					<span class="loadMore-right"><a href="">更多>></a></span>
+					<span class="loadMore-right"><a href="myArticle.jsp?type=share">更多>></a></span>
 				</div>
 			</div>
 			
@@ -113,7 +113,7 @@
 				<div>
 					<span class="glyphicon glyphicon-book loadMore-left"> 我的收藏</span>
 					<!-- <span class="loadMore-left">我的收藏</span> -->
-					<span class="loadMore-right"><a href="">更多>></a></span>
+					<span class="loadMore-right"><a href="myArticle.jsp?type=collect">更多>></a></span>
 				</div>
 			</div>
 			

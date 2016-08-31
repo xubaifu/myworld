@@ -617,15 +617,15 @@ html, body {
 	/* margin-left: 12%;margin-top: 50px; */
 	margin-left: auto;
 	margin-right: auto;
-	width: 1024px;
+	width: 830px;
 }
 /* .editerDiv div{
 	width: 1024px;
 } */
 .saveBtn{
-	padding: 30px 0 14px 330px;
-	/* margin-left: auto;
-	margin-right: auto; */
+	 padding: 30px 0 14px 215px; 
+	 /* margin-left: auto;
+	margin-right: auto;  */
 }
 .saveBtn button{
 	margin: 0 20px;

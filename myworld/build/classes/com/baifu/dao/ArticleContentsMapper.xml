@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.baifu.dao.ArticleContentsMapper">
+	<select id="selectContentsById" resultType="com.baifu.entity.Note" parameterType="string">
+		SELECT
+			t.cn_note_id,
+			t.cn_note_tag,
+			t.cn_note_body,
+			t.cn_notebook_code,
+			tt.cn_notebook_name,
+			tt.cn_notebook_type_code,
+			tt.cn_notebook_type_name,
+			date_format(
+				t.cn_note_last_modify_time,
+				'%Y-%c-%d'
+			) AS cn_note_last_modify_time,
+			t.cn_note_times,
+			t.cn_note_title,
+			t.cn_user_id,
+			t2.cn_user_name
+		FROM
+			cn_note t
+		LEFT JOIN (
+			SELECT
+				t1.cn_notebook_name,
+				t1.cn_notebook_code,
+				t3.cn_notebook_type_code,
+				t3.cn_notebook_type_name 
+			from cn_notebook t1
+			LEFT JOIN cn_notebook_type t3 ON t1.cn_notebook_type_code = t3.cn_notebook_type_code
+		) tt ON t.cn_notebook_code = tt.cn_notebook_code
+		LEFT JOIN cn_user t2 ON t.cn_user_id = t2.cn_user_id
+		WHERE t.cn_note_status_code = 1
+		and t.cn_note_id= #{noteId}
+	</select>
+	<select id="updateTimes" parameterType="string">
+		update cn_note t set  t.cn_note_times = t.cn_note_times + 1 where t.cn_note_id= #{noteId}
+	</select>
+	<insert id="collectArticle"  parameterType="hashmap">
+		insert INTO cn_collect VALUES(UUID(),#{noteId},#{userId},SYSDATE())
+	</insert>
+	<select id="checkCollection" parameterType="hashmap" resultType="string">
+		select COUNT(1) from cn_collect t where t.cn_note_id =#{noteId} and t.cn_user_id = #{userId}
+	</select>
+	<delete id="cancelCollectionFun" parameterType="hashmap">
+		DELETE FROM cn_collect WHERE cn_collect.cn_note_id =#{noteId}  and cn_collect.cn_user_id=#{userId}
+	</delete>
+</mapper>

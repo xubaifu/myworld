@@ -49,11 +49,6 @@
 			</select>
 		</div>
 	</div><!-- /.row -->
-
-
-
-
-
 		<div class="content">
 			<div class="loadMore-3">
 				<!-- <div class="tab"> -->
