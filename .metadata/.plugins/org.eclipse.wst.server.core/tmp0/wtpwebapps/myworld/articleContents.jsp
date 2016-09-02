@@ -20,6 +20,19 @@
 			location.href="login.jsp";
 		} */
 	</script>
+	<style type="text/css" media="print, screen">  
+		label {
+		    font-weight: bold;
+		}
+		a {
+			font-family: Microsoft YaHei;
+		}
+		#articleComment {
+			width: 830px;
+			/* height: 1500px; */
+			/* overflow: auto; */
+		}
+</style> 
 </head>
 <body>
 <jsp:include page="header.html"></jsp:include>
@@ -65,8 +78,29 @@
 				
 			</div>
 		</div>
-<jsp:include page="fotter.html"></jsp:include>
-</div>
+
+		<div id="articleComment" class="commentDiv">
+			<div style="margin-bottom: 20px;" class="ui threaded comments" id="commentItems">
+				<div style="font-size: 2rem; padding-bottom: 10px; border-bottom: 1px solid #DFDFDF;" class="text">全部评论</div>
+				</div>
+				<div id="commentFrom">
+					<form class="ui reply form" id="replyBoxAri">
+						<div class="ui large form ">
+							<div class="contentField field">
+								<textarea id="commentContent"></textarea>
+								<!-- <label for="commentContent" class="commentContentLabel">Content</label> -->
+							</div>
+							<div >
+								<button type="button" class="btn btn-primary" onclick="articleContentsObj.commentObj.addComment('')">提交评论</button>
+							</div>
+						</div>
+					</form>
+				</div>
+		</div>
+
+
+		<jsp:include page="fotter.html"></jsp:include>
+	</div>
 <script type="text/javascript" src="baifu/js/articleContents.js"></script>
 </body>
 </html>

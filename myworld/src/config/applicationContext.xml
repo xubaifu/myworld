@@ -82,6 +82,7 @@
 			<mvc:exclude-mapping path="/findShareNote/*"/>
 			<mvc:exclude-mapping path="/allArticleObj/*"/>
 			<mvc:exclude-mapping path="/articleContent/selectContentsFun.do"/>
+			<mvc:exclude-mapping path="/comment/getComment.do"/>
 			<bean class="com.baifu.web.interceptor.CheckLoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

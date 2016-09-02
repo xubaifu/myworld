@@ -44,7 +44,7 @@ public class AllArticleController {
 	 * 查询文章分类
 	 * @return
 	 */
-	@RequestMapping("/loadArticleType")
+	@RequestMapping("/loadArticleType.do")
 	@ResponseBody
 	public Result loadArticleType(){
 		List<NoteBook> list=allArticleService.loadArticleType();

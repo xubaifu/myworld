@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.baifu.dao.MyArticlesMapper">
+	<!-- 查询用户的所有文章 -->
+	<select id="findMyAllArticles" resultType="com.baifu.entity.Note" parameterType="hashmap">
+		SELECT
+			t.cn_note_id,
+			t.cn_note_title,
+			t.cn_user_id,
+			t2.cn_user_name,
+			date_format(t.cn_note_last_modify_time,'%Y-%c-%d') AS cn_note_last_modify_time,
+			t.cn_note_times,
+			t.cn_note_body,
+			t.cn_note_tag,
+			t1.cn_notebook_name,
+			t.cn_notebook_code
+		FROM
+			cn_note t
+		LEFT JOIN cn_notebook t1 ON t.cn_notebook_code = t1.cn_notebook_code
+		LEFT JOIN cn_user t2 ON t.cn_user_id = t2.cn_user_id
+		where t.cn_user_id=#{userId}
+		<if test="noteType != null and noteType != ''">
+                and  t.cn_notebook_code = #{noteType}
+        </if>
+        <if test="searchContent != null and searchContent != ''">
+        	<if test="searchType == 'CONTENT'.toString()">
+        		and  t.cn_note_body like CONCAT('%','${searchContent}','%') 
+        	</if>
+        	<if test="searchType == 'TITLE'.toString()">
+        		and  t.cn_note_title like CONCAT('%','${searchContent}','%') 
+        	</if>
+        	<if test="searchType == 'TAG'.toString()">
+        		and  t.cn_note_tag like CONCAT('%','${searchContent}','%') 
+        	</if>
+        </if>
+		ORDER BY
+			t.cn_note_last_modify_time DESC
+		limit #{begin},#{pageSize}
+	</select>
+	<!--  查询用户的所有分享 -->
+	<select id="findMyShare" resultType="com.baifu.entity.Note" parameterType="hashmap">
+		SELECT
+				tt.cn_note_id,
+				tt.cn_note_title,
+				date_format(tt.cn_note_last_modify_time,'%Y-%c-%d') as cn_note_last_modify_time,
+				tt.cn_note_times,
+				tt.cn_note_body,
+				tt.cn_note_tag,
+				tt.cn_notebook_name,
+				tt.cn_notebook_code,
+				tt.cn_user_name,
+				tt.cn_user_id
+		FROM
+			cn_share t
+		LEFT JOIN (
+			SELECT
+				t1.cn_note_id,
+				t1.cn_note_title,
+				t1.cn_note_last_modify_time,
+				t1.cn_note_times,
+				t1.cn_note_body,
+				t1.cn_note_tag,
+				t2.cn_notebook_name,
+				t2.cn_notebook_code,
+				t3.cn_user_name,
+				t3.cn_user_id
+			FROM
+				cn_note t1
+			LEFT JOIN cn_notebook t2 ON t1.cn_notebook_code = t2.cn_notebook_code
+			LEFT JOIN cn_user t3 ON t1.cn_user_id = t3.cn_user_id
+		) tt ON t.cn_note_id = tt.cn_note_id
+		where 1=1
+			and tt.cn_user_id=#{userId}
+		<if test="noteType != null and noteType != ''">
+                and  tt.cn_notebook_code = #{noteType}
+        </if>
+        <if test="searchContent != null and searchContent != ''">
+        	<if test="searchType == 'CONTENT'.toString()">
+        		and  tt.cn_note_body like CONCAT('%','${searchContent}','%') 
+        	</if>
+        	<if test="searchType == 'TITLE'.toString()">
+        		and  tt.cn_note_title like CONCAT('%','${searchContent}','%') 
+        	</if>
+        	<if test="searchType == 'TAG'.toString()">
+        		and  tt.cn_note_tag like CONCAT('%','${searchContent}','%') 
+        	</if>
+        </if>
+		order by tt.cn_note_last_modify_time DESC
+		limit #{begin},#{pageSize}
+	</select>
+	<!-- 查询用户的收藏 -->
+	<select id="findMyCollection" resultType="com.baifu.entity.Note" parameterType="hashmap">
+		SELECT
+				tt.cn_note_id,
+				tt.cn_note_title,
+				tt.cn_note_times,
+				tt.cn_note_body,
+				tt.cn_note_tag,
+				tt.cn_notebook_name,
+				tt.cn_notebook_code,
+				tt.cn_user_name,
+				tt.cn_user_id,
+				date_format(t.cn_collect_date,'%Y-%c-%d') as cn_note_last_modify_time
+		FROM
+			cn_collect t
+		LEFT JOIN (
+			SELECT
+				t1.cn_note_id,
+				t1.cn_note_title,
+				t1.cn_note_last_modify_time,
+				t1.cn_note_times,
+				t1.cn_note_body,
+				t1.cn_note_tag,
+				t2.cn_notebook_name,
+				t2.cn_notebook_code,
+				t3.cn_user_name,
+				t3.cn_user_id
+			FROM
+				cn_note t1
+			LEFT JOIN cn_notebook t2 ON t1.cn_notebook_code = t2.cn_notebook_code
+			LEFT JOIN cn_user t3 ON t1.cn_user_id = t3.cn_user_id
+		) tt ON t.cn_note_id = tt.cn_note_id
+		where 1=1
+			and t.cn_user_id=#{userId}
+		<if test="noteType != null and noteType != ''">
+                and  tt.cn_notebook_code = #{noteType}
+        </if>
+        <if test="searchContent != null and searchContent != ''">
+        	<if test="searchType == 'CONTENT'.toString()">
+        		and  tt.cn_note_body like CONCAT('%','${searchContent}','%') 
+        	</if>
+        	<if test="searchType == 'TITLE'.toString()">
+        		and  tt.cn_note_title like CONCAT('%','${searchContent}','%') 
+        	</if>
+        	<if test="searchType == 'TAG'.toString()">
+        		and  tt.cn_note_tag like CONCAT('%','${searchContent}','%') 
+        	</if>
+        </if>
+		order by t.cn_collect_date
+		limit #{begin},#{pageSize}
+	</select>
+	
+	<!-- 文章分类信息 -->
+	<select id="loadArticleType" resultType="com.baifu.entity.NoteBook">
+		select t.cn_notebook_code,t.cn_notebook_name from cn_notebook t ORDER BY t.cn_notebook_name
+	</select>
+</mapper>

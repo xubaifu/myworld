@@ -22,7 +22,7 @@
 		var loginName = "<%=session.getAttribute("userName") %>";
 		var userId = "<%=session.getAttribute("userId") %>";
 		if(loginName == "null" || loginName == "" || loginName == null){
-			location.href="login.jsp";
+			location.href="login.jsp?url="+window.location.href;
 		}
 	</script>
 </head>
@@ -43,7 +43,7 @@
 		</div>
 		<h3><small>文章内容</small></h3>
 	   	<div>
-	   		<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+	   		<script id="editor" type="text/plain" style="width:830px;height:500px;"></script>
 	   	</div>
 	   	<div class="form-group">
 			<h3><small>文章标签（添加Tag，分享之后你的内容能被更多人看到）</small></h3>

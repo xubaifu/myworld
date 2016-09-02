@@ -617,15 +617,15 @@ html, body {
 	/* margin-left: 12%;margin-top: 50px; */
 	margin-left: auto;
 	margin-right: auto;
-	width: 1024px;
+	width: 830px;
 }
 /* .editerDiv div{
 	width: 1024px;
 } */
 .saveBtn{
-	padding: 30px 0 14px 330px;
-	/* margin-left: auto;
-	margin-right: auto; */
+	 padding: 30px 0 14px 215px; 
+	 /* margin-left: auto;
+	margin-right: auto;  */
 }
 .saveBtn button{
 	margin: 0 20px;
@@ -884,8 +884,278 @@ ul, ol {
 }
 /* articleContent 页面  end*/
 
+/* 留言板 */
 
 
+.commentDiv{
+	margin-left: auto;margin-right: auto;width: 830px;
+}
+.commentDiv .ui.comments .comment:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+.commentDiv .ui.threaded.comments .comment .comments{
+	box-shadow: 0px 0 0 rgba(0, 0, 0, 0.05);
+}
+.commentDiv .ui.threaded.comments .comment .comments {
+   /*  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.05); */
+    margin-left: 2em !important;
+    padding-left: 2em !important;
+}
+.commentDiv .ui.comments > .comment .comments {
+    margin-left: 2em;
+}
+.commentDiv .ui.comments .comment .comments {
+    margin-top: 0.5em;
+    padding-bottom: 1em;
+    padding-top: 0.5em;
+}
+ 
+
+
+.commentDiv .ui.comments .comment .comments::before {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.commentDiv .ui.comments .comment {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    position: relative;
+}
+.commentDiv .ui.comments .comment > .content-1, .ui.comments .comment > .avatar {
+    display: block;
+}
+.commentDiv .ui.comments .comment .avatar {
+    display: block;
+    float: left;
+    width: 4em;
+}
+
+.commentDiv .ui.comments .comment .avatar img {
+    border-radius: 500px;
+    display: block;
+    height: 3em;
+    margin: 0 auto;
+    width: 3em;
+}
+.commentDiv .ui.comments .comment > .avatar ~ .content-1 {
+    margin-left: 3.5em;
+    padding-top: 0.25em;
+}
+.commentDiv .ui.comments .comment .avatar ~ .content-1 {
+    padding: 0 1em;
+}
+.commentDiv .ui.comments .comment > .content-1, .ui.comments .comment > .avatar {
+    display: block;
+}
+.commentDiv .topStyle {
+    border-top: 1px solid #dfdfdf;
+}
+
+.commentDiv .ui.comments a {
+    cursor: pointer;
+}
+.commentDiv .comments a {
+    color: #000000;
+    outline: 0 none;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+}
+.commentDiv .author {
+    font-size: 15px;
+}
+
+.commentDiv .ui.comments .comment .metadata {
+    color: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    margin-left: 0.3em;
+}
+.commentDiv .ui.comments .comment .metadata > * {
+    display: inline-block;
+    margin: 0 0.3em 0 0;
+}
+.commentDiv .date {
+    font-size: 13px;
+}
+.commentDiv .ui.comments .comment .text {
+    margin: 0.25em 0 0.5em;
+    word-wrap: break-word;
+}
+.commentDiv .text {
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+}
+.commentDiv .ui.comments .comment .actions {
+    font-size: 0.9em;
+}
+
+.commentDiv .ui.comments .comment .actions a {
+    color: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin: 0 0.3em 0 0;
+}
+.commentDiv .ui.comments a {
+    cursor: pointer;
+}
+.commentDiv .comments a {
+    color: #000000;
+    outline: 0 none;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+}
+
+
+.commentDiv .ui.form {
+    max-width: 100%;
+    position: relative;
+}
+.commentDiv form {
+    backface-visibility: hidden;
+}
+
+.commentDiv .ui.large.form {
+    font-size: 1.125em;
+}
+.commentDiv .ui.form *:last-child {
+    margin-bottom: 0;
+}
+.commentDiv .ui.form *:first-child {
+    margin-top: 0;
+}
+.commentDiv .ui.form {
+    max-width: 100%;
+    position: relative;
+}
+
+.commentDiv .ui.form .field {
+    clear: both;
+    margin: 0 0 1em;
+}
+.commentDiv .ui.form *:first-child {
+    margin-top: 0;
+}
+.commentDiv .contentField {
+    float: none !important;
+}
+.commentDiv .field {
+    float: left;
+    margin: 10px;
+    position: relative;
+}
+.commentDiv .ui.form textarea, .ui.form input[type="checkbox"] {
+    vertical-align: top;
+}
+.commentDiv .ui.textarea, .ui.form textarea {
+    height: 12em;
+    line-height: 1.33;
+    max-height: 24em;
+    min-height: 8em;
+    resize: vertical;
+}
+.commentDiv .ui.form textarea, .ui.form input[type="text"], .ui.form input[type="email"], .ui.form input[type="date"], .ui.form input[type="password"], .ui.form input[type="number"], .ui.form input[type="tel"] {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.3125em;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3) inset;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.875em;
+    margin: 0;
+    outline: medium none;
+    padding: 0.85em 1.2em;
+    transition: background-color 0.3s ease-out 0s, box-shadow 0.2s ease 0s, border-color 0.2s ease 0s;
+}
+.commentDiv .ui.form textarea, .ui.form input[type="text"], .ui.form input[type="email"], .ui.form input[type="date"], .ui.form input[type="password"], .ui.form input[type="number"], .ui.form input[type="tel"], .ui.form .ui.input {
+    width: 100%;
+}
+.commentDiv .form input, .form textarea {
+    border: 1px solid #eee;
+    outline: medium none;
+    padding: 1.2em 0.5em;
+}
+.commentDiv textarea + label, .areadefault {
+    top: 20px;
+}
+.commentDiv textarea + label, input + label, .inputdefault {
+    color: #aaa;
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.2s ease 0s;
+}
+.commentDiv #submitComment {
+    background-color: #1ba7d5;
+    background-image: none;
+    font-size: 16px;
+}
+.commentDiv .ui.labeled.icon.buttons .button, .ui.labeled.icon.button {
+    padding-left: 4em !important;
+    padding-right: 1.4em !important;
+    position: relative;
+}
+.commentDiv .ui.teal.buttons .button, .ui.teal.button {
+    background-color: #00b5ad;
+    color: #ffffff;
+}
+.commentDiv .ui.icon.buttons .button, .ui.icon.button {
+    padding: 0.8em;
+}
+.commentDiv .ui.buttons .button, .ui.button {
+    font-size: 1rem;
+}
+.commentDiv .ui.button {
+    -moz-user-select: none;
+    background-color: #fafafa;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05));
+    border: medium none;
+    border-radius: 0.25em;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08) inset;
+    box-sizing: border-box;
+    color: #808080;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0;
+    min-height: 1em;
+    outline: medium none;
+    padding: 0.8em 1.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 0.25s ease 0s, background-color 0.25s ease 0s, color 0.25s ease 0s, background 0.25s ease 0s, box-shadow 0.25s ease 0s;
+    vertical-align: middle;
+}
+.commentDiv i.icon {
+    font-size: 1em;
+}
+.commentDiv i.icon {
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: "Icons";
+    font-style: normal;
+    font-weight: normal;
+    height: 1em;
+    line-height: 1;
+    margin: 0 0.25em 0 0;
+    opacity: 0.75;
+    text-align: center;
+    text-decoration: inherit;
+    width: 1.23em;
+}
+
+.commentDiv .ui.form *::-moz-placeholder {
+    color: #aaaaaa;
+}
+
+/* 留言板 */
 
 
 
