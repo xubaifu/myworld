@@ -6396,3 +6396,119 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.core.net 1 0 2016-08-31 09:15:13.372
 !MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+!SESSION 2016-09-01 09:25:18.330 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-09-01 09:28:03.024
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\xubaifu'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:28:04.377
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:28:04.378
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:32:56.889
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:32:56.889
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.299
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.299
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.338
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.338
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.461
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.461
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.607
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.607
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.646
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.646
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.663
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.663
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.685
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.685
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.706
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.706
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.741
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.741
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.782
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.782
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.807
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.808
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.847
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.848
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.913
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.913
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.952
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:36.952
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:37.878
+!MESSAGE System property https.proxyHost is set to dl-proxy.neusoft.com but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2016-09-01 09:35:37.878
+!MESSAGE System property https.proxyPort is set to 8080 but should not be set.

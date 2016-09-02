@@ -40,14 +40,14 @@ allShareObj.findShareNote.findShareNoteFunction = function(noteType,begin,pageSi
 							 return;
 						 }
 						 $(list[i]).each(function(){
-								var num = Math.floor(Math.random()*30+1);
+								var num = Math.floor(Math.random()*62+1);
 								var li = '<li><a target="_blank" href="articleContents.jsp?noteId='+this.cn_note_id+'">'+
 								'	<div class="caseThum">'+
 								'		<img width="300" height="180" align="SVG水纹波动的按钮特效"'+
 								'			src="baifu/image/jquery-'+num+'.jpg">'+
 								'	</div>'+
 								'	<div class="caseBottom">'+
-								'		<div class="caseName">'+this.cn_note_title+'</div>'+
+								'		<div class="caseName" title="'+this.cn_note_title+'">'+this.cn_note_title+'</div>'+
 								'		<div class="caseInfo">'+
 								'			<div class="caseIcon ll">'+this.cn_note_times+'</div>'+
 								'			<div class="caseTime">'+this.cn_note_last_modify_time+'</div>'+
