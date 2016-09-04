@@ -45,7 +45,7 @@ myWorldObj.findNote.findNoteByUser = function(userId){
 								'			src="baifu/image/jquery-'+num+'.jpg">'+
 								'	</div>'+
 								'	<div class="caseBottom">'+
-								'		<div class="caseName" title="'+this.cn_note_title+'">'+this.cn_note_title+'</div>'+
+								'		<div class="caseName">'+this.cn_note_title+'</div>'+
 								'		<div class="caseInfo">'+
 								'			<div class="caseIcon ll">'+this.cn_note_times+'</div>'+
 								'			<div class="caseTime">'+this.cn_note_last_modify_time+'</div>'+
