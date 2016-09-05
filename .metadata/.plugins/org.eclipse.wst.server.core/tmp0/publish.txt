@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Sun Sep 04 13:35:52 CST 2016
-org.eclipse.jst.jee.server\:/binary\:E\:\\xubaifu\\gitSpace\\myworld\\WebContent\\WEB-INF\\lib\\spring-web-3.2.8.RELEASE.jar=WEB-INF/lib/spring-web-3.2.8.RELEASE.jar
