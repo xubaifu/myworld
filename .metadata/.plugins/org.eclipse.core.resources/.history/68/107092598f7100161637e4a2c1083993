@@ -1,8 +1,0 @@
-#url=jdbc:mysql://localhost:3306/webtest?useUnicode=true&characterEncoding=utf-8
-#driver=com.mysql.jdbc.Driver
-#user=root
-#password=
-url=jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_shareone?useUnicode=true&characterEncoding=utf-8
-driver=com.mysql.jdbc.Driver
-user=SAE_MYSQL_USER
-password=SAE_MYSQL_PASS
