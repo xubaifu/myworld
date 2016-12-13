@@ -16,7 +16,8 @@
 			UUID(),
 			#{cn_user_name},
 			#{cn_user_password},
-			#{cn_user_token},
+			0,
+			NOW(),
 			#{cn_user_desc}
 		)
 	</insert>

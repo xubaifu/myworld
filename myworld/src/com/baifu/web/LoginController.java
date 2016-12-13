@@ -68,6 +68,8 @@ public class LoginController {
 			session.setAttribute("user", map.get("user"));
 			session.setAttribute("userName", user.getCn_user_name());
 			session.setAttribute("userId", user.getCn_user_id());
+			//用户标识：1为管理员，0为普通用户，2为vip用户
+			session.setAttribute("adminTab", user.getCn_user_token());
 			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("flag", flag);
 			m.put("userID", user.getCn_user_id());

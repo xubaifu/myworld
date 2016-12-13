@@ -12,6 +12,7 @@ public class User implements Serializable{
 	private String cn_user_name;
 	private String cn_user_password;
 	private String cn_user_token;
+	private String cn_user_register_time;
 	private String cn_user_desc;
 	public String getCn_user_id() {
 		return cn_user_id;
@@ -43,6 +44,11 @@ public class User implements Serializable{
 	public void setCn_user_desc(String cn_user_desc) {
 		this.cn_user_desc = cn_user_desc;
 	}
-	
+	public String getCn_user_register_time() {
+		return cn_user_register_time;
+	}
+	public void setCn_user_register_time(String cn_user_register_time) {
+		this.cn_user_register_time = cn_user_register_time;
+	}
 	
 }

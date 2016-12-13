@@ -13,6 +13,8 @@ public class NoteBook implements Serializable{
 	private int cn_notebook_code;
 	private String cn_notebook_name;
 	private String cn_notebook_desc;
+	private String cn_notebook_type_code;
+	private String cn_notebook_type_name;
 	private String cn_notebook_createtime;
 	public String getCn_notebook_id() {
 		return cn_notebook_id;
@@ -44,7 +46,18 @@ public class NoteBook implements Serializable{
 	public void setCn_notebook_createtime(String cn_notebook_createtime) {
 		this.cn_notebook_createtime = cn_notebook_createtime;
 	}
- 
+	public String getCn_notebook_type_code() {
+		return cn_notebook_type_code;
+	}
+	public void setCn_notebook_type_code(String cn_notebook_type_code) {
+		this.cn_notebook_type_code = cn_notebook_type_code;
+	}
+	public String getCn_notebook_type_name() {
+		return cn_notebook_type_name;
+	}
+	public void setCn_notebook_type_name(String cn_notebook_type_name) {
+		this.cn_notebook_type_name = cn_notebook_type_name;
+	}
 	
 
 }

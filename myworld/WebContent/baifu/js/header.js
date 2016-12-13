@@ -55,7 +55,7 @@ var logoutOrChangePW = {
 					function(result){
 						if(result.success){
 							//程序执行成功
-							cookieFunction.delCookie("userName");
+							//cookieFunction.delCookie("userName");
 							location.href="login.jsp";
 						}else{
 							//程序执行失败
