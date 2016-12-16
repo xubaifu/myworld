@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	//控制模态框
+	$(function () { $('#myModal').modal('hide');});
+	//控制左侧菜单栏
 	$(".leftsidebar_box dt").css({"background-color":"#22282E"});
 	$(".leftsidebar_box dt img").attr("src","baifu/image/leftMenu/select_xl01.png");
 	$(function(){
@@ -62,7 +65,7 @@ var adminObj = {
 											"<td>"+list[i].cn_notebook_type_name+"</td>"+
 											"<td>"+list[i].cn_notebook_type_code+"</td>"+
 											"<td>"+list[i].cn_notebook_type_desc+"</td>"+
-											"<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='#'>删除</a></td>"+
+											"<td><a href='#' data-toggle='modal' data-target='#myModal'>修改</a>&nbsp;&nbsp;<a href='#'>删除</a></td>"+
 							        	"</tr>");
 					        	}
 			        		}
@@ -93,7 +96,7 @@ var adminObj = {
 											"<td>"+list[i].cn_notebook_code+"</td>"+
 											"<td>"+list[i].cn_notebook_type_name+"</td>"+
 											"<td>"+list[i].cn_notebook_desc+"</td>"+
-											"<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='#'>删除</a></td>"+
+											"<td><a href='#' data-toggle='modal' data-target='#myModal'>修改</a>&nbsp;&nbsp;<a href='#'>删除</a></td>"+
 							        	"</tr>");
 					        	}
 				        		}
@@ -116,7 +119,6 @@ var adminObj = {
 			        async: true,
 			        dataType: "json",
 			        success: function(result){
-			        	console.log(result)
 			        	if(result.success){
 			        	  $("#registeredUsersTable tbody").children().remove();
 			        		var list = result.data;

@@ -16,7 +16,6 @@ import com.baifu.entity.Result;
 import com.baifu.entity.User;
 import com.baifu.service.LoginService;
 import com.baifu.util.SystemConstant;
-
 /**
  * 登录模块
  * 
@@ -123,8 +122,6 @@ public class LoginController {
 			m.put("flag", flag);
 			return new Result(m);
 		}
-		
-		
 	}
 	
 	//查询文章分类标题
@@ -134,5 +131,16 @@ public class LoginController {
 		List<NotebookType> list=loginService.findHeadTitle();
 		return new Result(list);
 	}
+	
+	//第三方登录
+	@RequestMapping("/baidu.do")
+	@ResponseBody
+	public Result baidu(String code,HttpSession session){
+		List<User> list = loginService.baidu(code,session);
+		return new Result(list);
+	}
+	
+	
+	
 	
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.baifu.entity.NotebookType;
 import com.baifu.entity.User;
 import com.baifu.util.Md5Util;
 import com.baifu.util.SystemConstant;
+import com.baifu.util.ThirdPartLoginUtil;
 
 /**
  * 登录模块业务组件2来管理该业务组件的事务，声明式事务很简单，只需要配置即可，但是要求这些业务方法 具有一定的规律，以便事务管理组件可以识别该方法的增删改查
@@ -22,7 +25,6 @@ import com.baifu.util.SystemConstant;
 public class LoginService implements SystemConstant {
 	@Resource
 	private UserMapper userMapper;
-
 	/**
 	 * 添加用户
 	 * 
@@ -131,4 +133,51 @@ public class LoginService implements SystemConstant {
 		
 		return list;
 	}
+	
+	//百度第三方登录
+	public List<User> baidu(String code,HttpSession session){
+		List<User> list = null;
+		try {
+			String token = ThirdPartLoginUtil.getAccessToken(code);
+			if(token != null){
+				Map<String,String> map = ThirdPartLoginUtil.getUserMessage(token);
+				if(map != null){
+					//判断用户id是否存在
+					List<User> listUser = userMapper.findByUserId(map.get("uid"));
+					if(listUser.size() != 0){
+						// 将登录信息存入session
+						User user = (User) listUser.get(0);
+						session.setAttribute("user", user);
+						session.setAttribute("userName", map.get("uname"));
+						session.setAttribute("userId", user.getCn_user_id());
+						//用户标识：1为管理员，0为普通用户，2为vip用户
+						session.setAttribute("adminTab", user.getCn_user_token());
+						//更新用户名
+						user.setCn_user_name(map.get("uname"));
+						user.setCn_user_third_id(map.get("uid"));
+						userMapper.updateUsername(user);
+					}else{
+						/*User user = (User) listUser.get(0);
+						userMapper.save(user);*/
+						User user = new User();
+						user.setCn_user_name(map.get("uname"));
+						user.setCn_user_third_id(map.get("uid"));
+						user.setCn_user_desc("第三方登录用户");
+						userMapper.save(user);
+						listUser = userMapper.findByUserId(map.get("uid"));
+						user = (User) listUser.get(0);
+						session.setAttribute("user", user);
+						session.setAttribute("userName", map.get("uname"));
+						session.setAttribute("userId", user.getCn_user_id());
+						//用户标识：1为管理员，0为普通用户，2为vip用户
+						session.setAttribute("adminTab", user.getCn_user_token());
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 }

@@ -188,6 +188,67 @@
 			</div>
 		</div>
 </div>	
+<!-- <div style="float: left;position: absolute;margin-left: 30%;margin-top: 150px;width: 600px;height: 400px;background-color: gray;">
+sdxgfsdfghsdf
+</div> -->
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					修改类别信息
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="inputPassword" class="col-sm-2 control-label">
+						编码 </label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" disabled><br>
+					</div>
+				</div><br>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">名称</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" ><br>
+					</div>
+				</div><br>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">所属知识库</label>
+					<div class="col-sm-10">
+						<select class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+						<br>
+					</div>
+				</div><br>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">描述</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text"><br>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer-admin">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					关闭
+				</button>
+				<button id="submitButton" type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <!-- 页面主体 end -->
 <script type="text/javascript" src="baifu/js/admin.js"></script>
 <script type="text/javascript" src="baifu/js/adminCharts.js"></script>

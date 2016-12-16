@@ -25,4 +25,9 @@ public interface UserMapper {
 	
 	//查询文章分类标题
 	List<NotebookType> loadHeadTitle();
+	
+	//判断用户id是否存在（第三方登录）
+	List<User> findByUserId(String uid);
+	//更新用户名
+	void updateUsername(User user);
 }

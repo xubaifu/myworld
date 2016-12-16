@@ -15,8 +15,8 @@
 	<script type="text/javascript">
 		var loginName = "<%=session.getAttribute("userName") %>";
 	</script>
-</head>
-	<body>
+</head>	
+ <body>
 	<jsp:include page="header.html"></jsp:include>
 	<!-- 登录 -->
 	<div class="box" id="dl">
@@ -67,6 +67,17 @@
 								<p class="text-center remove-margin">
 									<small>还没注册?</small> <a href="javascript:void(0)" id="toRegister"><small>注册</small></a>
 								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="third-part" data-mod="popu_27">
+								<!-- <span>第三方帐号登录</span> <span><font color="red"> </font></span>  -->
+								<a href="#" class="sina"></a> 
+								<a id="linkedinAuthorizationUrl" href="#" class="linkin"></a> 
+								<a id="baiduAuthorizationUrl" href="http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=t4xi8kn1FGfgXxsgcD6q4uWi&redirect_uri=http://10.4.128.110:8080/myworld" class="baidu"></a> 
+								<a id="qqAuthorizationUrl" href="#" class="qq"></a>
+								<!-- <a id="githubAuthorizationUrl" href="#" class="github"></a>  -->
+								<!-- <a id="wechatAuthorizationUrl" href="javascript:void(0)" onclick="show();" class="wechat" target="_parent"></a> -->
 							</div>
 						</div>
 					<!-- </form> -->
@@ -124,6 +135,7 @@
 									<span class="glyphicon glyphicon-off"></span> 返回
 								</button>
 							</div>
+							<span><a href="login.jsp" style="float: right;margin-right: 20px;margin-top: 65px;color: red"></span>第三方登录</a></span>
 						</div>
 					<!-- </form> -->
 				</div>

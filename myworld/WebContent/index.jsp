@@ -16,6 +16,23 @@
 	<script type="text/javascript">
 		var loginName = "<%=session.getAttribute("userName") %>";
 		var userId = "<%=session.getAttribute("userId") %>";
+		var thirdPartCode = common.getURLParams("code");
+		if(loginName == "null" && thirdPartCode != null){
+			$.ajax({
+		        type: "POST",
+		        url: basePath+"/login/baidu.do",
+		        data: {"code" : thirdPartCode},
+		        async: true,
+		        dataType: "json",
+		        success: function(result){
+		        	if(result.success){
+		        		location.href="index.jsp";
+		        	}else{
+		        		alert("请求失败");
+		        	}
+		        }
+			});    
+		}
 	</script>
 </head>
 <body>
