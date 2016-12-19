@@ -82,7 +82,7 @@ public class ThirdPartLoginUtil {
 	public static Map<String,String> getUserMessage(String token) throws IOException{
 		Map<String,String> map = new HashMap<String,String>();
 		
-		String urlstr = "https://openapi.baidu.com/rest/2.0/passport/users/getLoggedInUser?access_token="+token;
+		String urlstr = "";
 		//获取百度url接口
 		try {
 			map = getXMLMessage("thirdPartLogin.xml");
@@ -144,7 +144,7 @@ public class ThirdPartLoginUtil {
 	}
 	
 	
-	private static void replace(String str) {
+	/*private static void replace(String str) {
         //String str = "asfas5fsaf5s4fs6af.sdaf.asf.wqre.qwr.fdsf.asf.asf.asf";
         //将字符串中的.替换成_，因为.是特殊字符，所以要用\.表达，又因为\是特殊字符，所以要用\\.来表达.
         str = str.replaceAll("response_type", "_");
@@ -153,7 +153,7 @@ public class ThirdPartLoginUtil {
 	
 	public static void main(String[] args) {
 		replace("http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=YOUR_URI");
-	}
+	}*/
 	
 	
 }
