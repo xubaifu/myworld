@@ -140,6 +140,18 @@ public class LoginController {
 		return new Result(list);
 	}
 	
+	//校验验证码
+	@RequestMapping("/checkCode.do")
+	@ResponseBody
+	public Result checkCode(String checkCode,HttpSession session){
+		Map<String, Object> m = new HashMap<String, Object>();
+		if(checkCode.equals(session.getAttribute("randCheckCode"))){
+			m.put("flag", SystemConstant.SUCCESS);
+		}else{
+			m.put("flag", SystemConstant.OTHER_FALSE);
+		}
+		return new Result(m);
+	}
 	
 	
 	

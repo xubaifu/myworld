@@ -5,8 +5,8 @@
 			<param name="indexURL" value="http://10.4.128.110:8080/myworld"></param>
 			<param name="accessTokenURL" value="https://openapi.baidu.com/oauth/2.0/token?grant_type=authorization_code&amp;code=BAIDU_CODE&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET&amp;redirect_uri=YOUR_URI"></param>
 			<param name="getUserURL" value="https://openapi.baidu.com/rest/2.0/passport/users/getLoggedInUser?access_token=BAIDU_TOKEN"></param>
-			<param name="id" value="9040204"></param>
-			<param name="APIKey" value="t4xi8kn1FGfgXxsgcD6q4uWi"></param>
-			<param name="SecretKey" value="pYztg4BRaTpDSqGLK9NNwykgMXQ21vRc"></param>
+			<param name="id" value="9097290"></param>
+			<param name="APIKey" value="NR9OSkfsWmsd3SOETz1lqBpE"></param>
+			<param name="SecretKey" value="QIAEMYj4B4Ze6heolPbhWFs6N7xNazCH"></param>
 		</params>
 </config>

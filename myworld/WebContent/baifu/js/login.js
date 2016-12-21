@@ -38,7 +38,10 @@ $(function(){
 		loginOrRegister.changePW.changepwd();
 	});
 	
-	
+	//更换验证码
+	$("#createCheckCode").click(function(){
+		loginOrRegister.checkCode.changeCheckCode();
+	});
 });
 
 //登录和注册模块
@@ -49,6 +52,13 @@ var loginOrRegister = {
 		registerFunction : {},
 		//修改密码
 		changePW : {},
+		//更换验证码
+		checkCode : {
+			changeCheckCode : function(){
+				//不知道为啥通过$("#createCheckCode").src不可用
+				document.getElementById("createCheckCode").src = document.getElementById("createCheckCode").src + "?nocache=" + new Date().getTime();  
+			}
+		}
 };
 
 //注册
@@ -125,36 +135,59 @@ loginOrRegister.loginFunction.login = function() {
 		alert("输入密码");
 		return;
 	}
-	// 校验用户名和密码是否正确
-	$.post(
-			basePath+"/login/login.do",
-			{"userName":userName,"password":password},
-			function(result){
-				console.log(result);
-				if(result.success){
-					//程序执行正确
-					var map=result.data;
-					if(map.flag==0){
-						// 跳转到edit.jsp页面
-						if(common.getURLParams("url") =="" ||common.getURLParams("url") =="null" ||common.getURLParams("url") ==null){
-							location.href="index.jsp";
+	// 判断验证码是否为空
+	var checkCode=$("#checkCode").val();
+	if(!checkCode){
+		alert("输入验证码");
+		return;
+	}else{
+		$.post(
+				basePath+"/login/checkCode.do",
+				{"checkCode":checkCode},
+				function(result){
+					if(result.success){
+						//判断验证码是否正确
+						var map=result.data;
+						if(map.flag!=0){
+							alert("验证码不正确");
+							isOK = "false";
+							return;
 						}else{
-							location.href=common.getURLParams("url");
+							// 校验用户名和密码是否正确
+							$.post(
+									basePath+"/login/login.do",
+									{"userName":userName,"password":password},
+									function(result){
+										console.log(result);
+										if(result.success){
+											//程序执行正确
+											var map=result.data;
+											if(map.flag==0){
+												// 跳转到edit.jsp页面
+												if(common.getURLParams("url") =="" ||common.getURLParams("url") =="null" ||common.getURLParams("url") ==null){
+													location.href="index.jsp";
+												}else{
+													location.href=common.getURLParams("url");
+												}
+												
+												//cookieFunction.addCookie("userID",map.userID,10);
+												//cookieFunction.addCookie("userName",map.userName,10);
+											}else if(map.flag==1){
+												alert("用户名错误");
+											}else{
+												alert("密码错误");
+											}
+										}else{
+											// 程序执行报错
+											alert(result.message);
+										}
+									}
+							);
 						}
-						
-						//cookieFunction.addCookie("userID",map.userID,10);
-						//cookieFunction.addCookie("userName",map.userName,10);
-					}else if(map.flag==1){
-						alert("用户名错误");
-					}else{
-						alert("密码错误");
 					}
-				}else{
-					// 程序执行报错
-					alert(result.message);
-				}
-			}
-	);
+				});
+	}
+	
 };
 /**
  * 修改密码

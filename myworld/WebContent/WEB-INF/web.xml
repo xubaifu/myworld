@@ -17,6 +17,14 @@
     <servlet-name>SpringMVC</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  <servlet>  
+    <servlet-name>PictureCheckCode</servlet-name>  
+    <servlet-class>com.baifu.web.checkCode.PictureCheckCode</servlet-class>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>PictureCheckCode</servlet-name>  
+    <url-pattern>/PictureCheckCode</url-pattern>  
+  </servlet-mapping>  
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>

@@ -11,7 +11,7 @@ html, body {
     }
 .login-box {
     height: 400px;
-    margin-top: -200px;
+    margin-top: -220px;
     max-width: 500px;
     position: absolute;
     top: 50%;
@@ -33,7 +33,7 @@ html, body {
 .login-content {
     background-color: rgba(255, 250, 255, 0.6);
     float: left;
-    height: 360px;
+    height: 400px;
     max-width: 500px;
     width: 100%;
 }

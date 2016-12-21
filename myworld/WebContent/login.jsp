@@ -50,6 +50,19 @@
 								</div>
 							</div>
 						</div>
+						<div class="form-group">
+							<div class="col-xs-12  ">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-check">
+										</span>
+									</span> 
+									<input  class="form-control" style="width: 70%" name="checkCode" type="text" id="checkCode" title="验证码区分大小写" size="8" ,maxlength="4" />
+            						&nbsp;&nbsp;&nbsp;&nbsp;
+            						<img src="PictureCheckCode" id="createCheckCode" align="middle">  
+								</div>
+							</div>
+						</div>
 						<div class="form-group form-actions">
 							<div class="col-xs-4 col-xs-offset-4 ">
 								<button class="btn btn-sm btn-info" type="button" id="login">
@@ -74,7 +87,7 @@
 								<!-- <span>第三方帐号登录</span> <span><font color="red"> </font></span>  -->
 								<a href="#" class="sina"></a> 
 								<a id="linkedinAuthorizationUrl" href="#" class="linkin"></a> 
-								<a id="baiduAuthorizationUrl" href="http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=t4xi8kn1FGfgXxsgcD6q4uWi&redirect_uri=http://10.4.128.110:8080/myworld" class="baidu"></a> 
+								<a id="baiduAuthorizationUrl" href="http://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=NR9OSkfsWmsd3SOETz1lqBpE&redirect_uri=http://10.4.128.110:8080/myworld" class="baidu"></a> 
 								<a id="qqAuthorizationUrl" href="#" class="qq"></a>
 								<!-- <a id="githubAuthorizationUrl" href="#" class="github"></a>  -->
 								<!-- <a id="wechatAuthorizationUrl" href="javascript:void(0)" onclick="show();" class="wechat" target="_parent"></a> -->
