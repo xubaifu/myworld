@@ -27,16 +27,16 @@
 	<div class="row" style="margin-top: 30px;width:100%;">
 		<div class="col-lg-4" style="float: right;margin-right: 40px;">
 			<div class="input-group">
-			  <input id="searchContent" type="text" class="form-control" aria-label="...">
+			  	<input id="searchContent" type="text" class="form-control" aria-label="..." >
 				<div class="input-group-btn">
 				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">请选择 <span class="caret"></span></button>
 				  <ul class="dropdown-menu dropdown-menu-right">
 				    <li role="separator" class="divider"></li>
-				    <li><a href="javascript:allArticleObj.search('TITLE',true)">标题搜索</a></li> 
+				    <li><a id="TITLESearch" href="javascript:">标题搜索</a></li> 
 				    <li role="separator" class="divider"></li>
-				    <li><a href="javascript:allArticleObj.search('TAG',true)">标签搜索</a></li>
+				    <li><a id="TAGSearch" href="javascript:">标签搜索</a></li>
 				    <li role="separator" class="divider"></li>
-				    <li><a href="javascript:allArticleObj.search('CONTENT',true)">内容搜索</a></li>
+				    <li><a id="CONTENTSearch" href="javascript:">内容搜索</a></li>
 				  </ul>
 				  <!-- 隐藏域，存放搜索类型 -->
 				  <input type="text" id="searchType" value="" style="display: none;">
@@ -97,7 +97,7 @@
 									</div>
 								</li> -->
 							</ul>
-						<div class="loadMore-4"><a id="loadForHotShareByDate" href="javascript:allArticleObj.loadMore.loadMoreForAllShare('date')">加载更多 →</a></div>
+						<div class="loadMore-4"><a id="loadForHotShareByDate" href="javascript:">加载更多 →</a></div>
 						</div>
 					</div>
 				</div>
@@ -137,7 +137,7 @@
 									</div>
 								</li> -->
 							</ul>
-						<div class="loadMore-4"><a id="loadForHotShareByTimes" href="javascript:allArticleObj.loadMore.loadMoreForAllShare('times')">加载更多 →</a></div>
+						<div class="loadMore-4"><a id="loadForHotShareByTimes" href="javascript:">加载更多 →</a></div>
 						</div>
 					</div>
 				</div>

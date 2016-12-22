@@ -1,4 +1,26 @@
 $(document).ready(function(){
+	//搜索框绑定回车键
+	$('#searchContent').bind('keypress',function(event){
+		if(event.keyCode == '13') {
+			allArticleObj.search('CONTENT',true);
+		}
+	});
+	//分别为标题、标签、内容搜索绑定点击事件
+	$('#TITLESearch').click(function(){
+		allArticleObj.search('TITLE',true);
+	});
+	$('#TAGSearch').click(function(){
+		allArticleObj.search('TAG',true);
+	});
+	$('#CONTENTSearch').click(function(){
+		allArticleObj.search('CONTENT',true);
+	});
+	$('#loadForHotShareByDate').click(function(){
+		allArticleObj.loadMore.loadMoreForAllShare('date');
+	});
+	$('#loadForHotShareByTimes').click(function(){
+		allArticleObj.loadMore.loadMoreForAllShare('times');
+	});
 	//查询文章类型
 	allArticleObj.articleTypeFun.loadArticleType();
 	//获取文章信息
