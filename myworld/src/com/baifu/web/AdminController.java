@@ -1,6 +1,8 @@
 package com.baifu.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -51,5 +53,20 @@ public class AdminController {
 	public Result getUserFunction(){
 		List<User> list=adminService.getUser();
 		return new Result(list);
+	}
+	
+	/**
+	 * 修改用户基本信息
+	 * @return
+	 */
+	@RequestMapping("/updateUser.do")
+	@ResponseBody
+	public Result updateUser(String cn_user_name,String cn_user_token,String cn_user_desc){
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("cn_user_name", cn_user_name);
+		m.put("cn_user_token", cn_user_token);
+		m.put("cn_user_desc", cn_user_desc);
+		m = adminService.updateUser(m);
+		return new Result(m);
 	}
 }

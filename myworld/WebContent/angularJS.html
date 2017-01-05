@@ -1,19 +1,227 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <script src="baifu/js/common/AngularJS-v1.4.6.js"></script>
-    <title>AngularJS练习</title>
-</head>
-<body>
-	<div ng-app="myApp" ng-controller="siteCtrl"></div>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="baifu/common/bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="baifu/css/index.css"/>
+	<link rel="stylesheet" href="baifu/css/adminPage.css"/>
+	<script type="text/javascript" src="baifu/js/common/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="baifu/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+	<script src="baifu/js/common/AngularJS-v1.4.6.js"></script>
+	<script src="baifu/js/common/angular-route.js"></script>
+	<script src="baifu/js/common/angular-animate.min.js"></script>
+	<title>AngularJS练习</title>
 	<script>
-		var app = angular.module('myApp', []);
-		app.controller('siteCtrl',function($scope, $http){
-			$http.post("/myworld/login/login.do?userName=baifu&password=111111").success(function(data) {
-								alert(JSON.stringify(data));
-							});
-						});
+		var app = angular.module('adminApp', ['ngAnimate']);
+		app.controller('adminControl', function($scope, $http) {
+			$scope.allUsers = true;
+			//获取所有用户
+			$scope.getAllUsers = function(){
+				$scope.firstMenu = "用户管理";
+				$scope.secondMenu = "注册用户";
+				$scope.allUsers = false;
+				$http.post("admin/getUserFunction.do").success(
+						function (response) {
+						  	if(response.success == false){
+							 	alert(response.message);
+						  	}else{
+							  	$scope.users = response.data;
+						  	}
+				});
+			}
+			//选择框
+			$scope.sites = [
+		        {name:'管理员',value:'1'},
+		        {name:'普通用户',value:'0'},
+		    ];
+			//$scope.selected='2';//id的值，区分类型
+			//$scope.selected=$scope.sites[0].value; //如果想要第一个值
+			//点击查看用户详细信息
+			$scope.getUserDetail = function(x){
+				$scope.cn_user_name = x.cn_user_name;
+				$scope.cn_user_register_time = x.cn_user_register_time;
+				$scope.cn_user_desc = x.cn_user_desc;
+				//隐藏提交按钮
+				$scope.hide = true;
+				//输入框不可用
+				$scope.disabled = true;
+				//默认选择框数值
+				$scope.selected=x.cn_user_token_code;
+			}
+			//点击管理用户
+			$scope.updateUserDetail = function(x){
+				$scope.cn_user_name = x.cn_user_name;
+				$scope.cn_user_register_time = x.cn_user_register_time;
+				$scope.cn_user_desc = x.cn_user_desc;
+				//显示提交按钮
+				$scope.hide = false;
+				//输入框可用
+				$scope.disabled = false;
+				//默认选择框数值
+				$scope.selected=x.cn_user_token_code;
+			}
+			//提交更改
+			$scope.submitFun = function(userName,userToken,userDesc){
+				$http({
+			        method: 'POST',
+			        url:'admin/updateUser.do',
+			        data: $.param({'cn_user_name' : userName, 'cn_user_token' : userToken, 'cn_user_desc' : userDesc}),
+			        headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}
+			    }).success(function(response){
+			    	console.log(response)
+			    	if(response.data.flag != 0){
+			    		alert("修改失败");
+			    	}else{
+			    		$scope.getAllUsers();
+			    	}
+				}).error(function(){
+				    alert("修改失败");
+				});
+			}
+		});
 	</script>
+	<style type="text/css">
+		table a:hover {color: #FF0000} /* 未访问的链接 */
+		table a:visited {color: #00FF00} /* 已访问的链接 */
+		table a:link {color: #FF00FF} /* 鼠标移动到链接上 */
+		table a:active {color: #0000FF} /* 选定的链接 */
+	</style>
+</head>
+
+<body data-ng-app="adminApp" data-ng-controller="adminControl">
+<div>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button data-target=".navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+					<span class="sr-only"></span> <span class="icon-bar"></span> 
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<div class="header-brand">
+		           <a href="javascript:void(0)" class="navbar-brand hidden-sm">ShareOne管理控制台</a>
+		      	</div>
+			</div>
+			<div class="navbar-collapse collapse" id="headerList">
+				<ul class="nav navbar-nav navbar-right hidden-sm">
+					<li id="loginBtn" class="forHide"><a href="javascript:void(0)">欢迎您，管理员</a></li>
+					<li id="logout" class="forShow"><a href="javascript:void(0)">退出</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 页面左侧导航条 start -->
+	<div class="container_left">
+		<div class="leftsidebar_box">
+			<div class="line"></div>
+			<dl class="system_log">
+				<dt>系统管理<img src="baifu/image/leftMenu/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#tab_baseData" data-toggle="tab">基础数据</a></dd>
+				<dd><a id="articleType" href="#tab_articleType" data-toggle="tab">文章分类</a></dd>
+			</dl>
+			<dl class="custom">
+				<dt>用户管理<img src="baifu/image/leftMenu/select_xl01.png"></dt>
+				<dd class="first_dd"><a id="registeredUsers" href="#" data-ng-click="getAllUsers()">注册用户</a></dd>
+			</dl>
+			<dl class="source">
+				<dt>素材库管理<img src="baifu/image/leftMenu/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#tab_imageLiarbry" data-toggle="tab">图片库</a></dd>
+				<dd><a href="#tab_linkbase" data-toggle="tab">链接库</a></dd>
+				<!-- <dd><a href="#" data-toggle="tab">推广管理</a></dd> -->
+			</dl>
+			<dl class="statistics">
+				<dt>统计分析<img src="baifu/image/leftMenu/select_xl01.png"></dt>
+				<dd class="first_dd"><a href="#tab_userStatistics" data-toggle="tab">用户统计</a></dd>
+				<dd><a href="#tab_articleStatistics" data-toggle="tab">文章统计</a></dd>
+			</dl>
+		</div>
+	</div>
+	<div class="adminPage">
+		<div>
+			<ol class="breadcrumb" id="breadcrumb">
+				<li>控制台</li>
+				<li><a href="#">{{firstMenu}}</a></li>
+				<li class="active">{{secondMenu}}</li>
+			</ol>
+		</div>
+		
+		<div id="myTabContent" class="tab-content">
+			
+			<table class="table table-hover" data-ng-hide="allUsers">
+				<caption>注册用户</caption>
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>用户名</th>
+						<th>用户类型</th>
+						<th>注册时间</th>
+						<th>详细信息</th>
+						<th>备注</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tr data-ng-repeat="x in users">
+					<td>{{ $index + 1 }}</td>
+					<td>{{ x.cn_user_name }}</td>
+					<td>{{ x.cn_user_token }}</td>
+					<td>{{ x.cn_user_register_time }}</td>
+					<td><a href='#' data-ng-click="getUserDetail(x)" data-toggle='modal' data-target='#myModal'>点击查看</a></td>
+					<td>{{ x.cn_user_desc }}</td>
+					<td><a href='#' data-ng-click="updateUserDetail(x)" data-toggle='modal' data-target='#myModal'>管理</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						用户详细信息
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">用户名 </label>
+						<div class="col-sm-10">
+							<input class="form-control" type="text" data-ng-model="cn_user_name" data-ng-disabled=true><br>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">用户类型</label>
+						<div class="col-sm-10">
+							<select class="form-control" data-ng-model="selected" data-ng-options="x.value as x.name for x in sites" data-ng-disabled="disabled">
+							</select>
+							<br>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">注册时间</label>
+						<div class="col-sm-10">
+							<input class="form-control" type="text" data-ng-model="cn_user_register_time" data-ng-disabled=true><br>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">备注</label>
+						<div class="col-sm-10">
+							<input class="form-control" type="text" data-ng-model="cn_user_desc" data-ng-disabled="disabled"><br>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer-admin">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						关闭
+					</button>
+					<button id="submitButton" type="button" class="btn btn-primary" data-dismiss="modal" data-ng-hide="hide" data-ng-click="submitFun(cn_user_name,selected,cn_user_desc)">
+						提交更改
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<script type="text/javascript" src="baifu/js/leftMenu.js"></script>	
 </body>
 </html>

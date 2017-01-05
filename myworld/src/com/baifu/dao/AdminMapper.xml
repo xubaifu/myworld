@@ -26,9 +26,13 @@
 		SELECT
 			t.cn_user_name,
 			t.cn_user_register_time,
+			t.cn_user_token cn_user_token_code,
 			IF(t.cn_user_token=1,'管理员','普通用户') cn_user_token,
 			IFNULL(t.cn_user_desc,'') cn_user_desc
 		FROM
 			cn_user t
 	</select>
+	<update id="updateUser" parameterType="hashmap">
+		update cn_user set cn_user_token=#{cn_user_token}, cn_user_desc=#{cn_user_desc} where cn_user_name=#{cn_user_name}
+	</update>
 </mapper>

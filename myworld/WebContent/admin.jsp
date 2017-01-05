@@ -250,6 +250,7 @@ sdxgfsdfghsdf
 </div><!-- /.modal -->
 
 <!-- 页面主体 end -->
+<script type="text/javascript" src="baifu/js/leftMenu.js"></script>	
 <script type="text/javascript" src="baifu/js/admin.js"></script>
 <script type="text/javascript" src="baifu/js/adminCharts.js"></script>
 </body>

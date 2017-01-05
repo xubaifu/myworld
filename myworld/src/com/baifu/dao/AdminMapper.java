@@ -15,4 +15,6 @@ public interface AdminMapper {
 	List<NoteBook> getArticleType(Map<String,Object> map);
 	
 	List<User> getUser(Map<String,Object> map);
+	//修改用户信息
+	void updateUser(Map<String,Object> map);
 }

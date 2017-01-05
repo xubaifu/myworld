@@ -13,8 +13,9 @@ import com.baifu.dao.AdminMapper;
 import com.baifu.entity.NoteBook;
 import com.baifu.entity.NotebookType;
 import com.baifu.entity.User;
+import com.baifu.util.SystemConstant;
 @Service
-public class AdminService {
+public class AdminService  implements SystemConstant {
 	@Resource
 	private AdminMapper adminMapper;
 	/**
@@ -58,5 +59,20 @@ public class AdminService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	/**
+	 *修改用户基本信息
+	 * @return
+	 */
+	public Map<String,Object> updateUser(Map<String,Object> param){
+		//Map<String,Object> param=new HashMap<String,Object>();
+		try {
+			adminMapper.updateUser(param);
+			param.put("flag", SUCCESS);
+		} catch (Exception e) {
+			param.put("flag", OTHER_FALSE);
+			e.printStackTrace();
+		}
+		return param;
 	}
 }
