@@ -1,6 +1,7 @@
 var app = angular.module('adminApp', ['ngAnimate','ngRoute']);
 app.controller('adminController', function ($scope, $http) {
 	//获取所有用户
+	$scope.userManageHide = true;//隐藏用户信息表头
 	$scope.getAllUsers = function(){
 		$http.post("admin/getUserFunction.do").success(
 				function (response) {
@@ -8,6 +9,7 @@ app.controller('adminController', function ($scope, $http) {
 					 	alert(response.message);
 				  	}else{
 					  	$scope.users = response.data;
+					  	$scope.userManageHide = false;
 				  	}
 		});
 	};
@@ -22,6 +24,24 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/baseData', {
         	templateUrl: 'adminPage/baseData.html',
             controller: 'baseDataController'
+        }).when('/articleManage', {
+        	templateUrl: 'adminPage/articleManage.html',
+            controller: 'articleManageController'
+        }).when('/articleTypeManage', {
+        	templateUrl: 'adminPage/articleTypeManage.html',
+            controller: 'articleTypeManageController'
+        }).when('/linkLibraryManage', {
+        	templateUrl: 'adminPage/linkLibraryManage.html',
+            controller: 'linkLibraryManageController'
+        }).when('/imageLibraryManage', {
+        	templateUrl: 'adminPage/imageLibraryManage.html',
+            controller: 'imageLibraryManageController'
+        }).when('/userReportManage', {
+        	templateUrl: 'adminPage/userReportManage.html',
+            controller: 'userReportManageController'
+        }).when('/articleReportManage', {
+        	templateUrl: 'adminPage/articleReportManage.html',
+            controller: 'articleReportManageController'
         }).otherwise({
             redirectTo: '/baseData'
         });
@@ -79,8 +99,38 @@ app.controller('userManageController', function ($scope, $http) {
 			});
 		};
     });
-   //基础数据模块
+//基础数据模块
 app.controller('baseDataController', function ($http, $scope) {
 	$scope.firstMenu = "系统管理";
 	$scope.secondMenu = "基础数据";
+});
+//文章管理模块
+app.controller('articleManageController', function ($http, $scope) {
+	$scope.firstMenu = "文章管理";
+	$scope.secondMenu = "文章管理";
+});
+//文章分类管理
+app.controller('articleTypeManageController', function ($http, $scope) {
+	$scope.firstMenu = "系统管理";
+	$scope.secondMenu = "文章分类";
+});
+//图片库管理
+app.controller('imageLibraryManageController', function ($http, $scope) {
+	$scope.firstMenu = "素材库管理";
+	$scope.secondMenu = "图片库";
+});
+//链接库
+app.controller('linkLibraryManageController', function ($http, $scope) {
+	$scope.firstMenu = "素材库管理";
+	$scope.secondMenu = "链接库";
+});
+//用户统计
+app.controller('userReportManageController', function ($http, $scope) {
+	$scope.firstMenu = "统计分析";
+	$scope.secondMenu = "用户统计";
+});
+//文章统计
+app.controller('articleReportManageController', function ($http, $scope) {
+	$scope.firstMenu = "统计分析";
+	$scope.secondMenu = "文章统计";
 });

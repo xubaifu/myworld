@@ -88,7 +88,8 @@ loginOrRegister.registerFunction.register = function(){
 	$.post(
 			basePath+"/login/register.do",
 			{"cn_user_name":userName,
-			 "cn_user_password":password},
+			 "cn_user_password":password,
+			 "cn_user_desc":"平台注册用户"},
 			 //ajax默认把Controller的返回值封装到request中，所以，request会访问到session
 			 //data、success属性
 			function(result){

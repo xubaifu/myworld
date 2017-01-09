@@ -31,6 +31,7 @@
 			IFNULL(t.cn_user_desc,'') cn_user_desc
 		FROM
 			cn_user t
+		ORDER BY t.cn_user_token DESC, t.cn_user_name
 	</select>
 	<update id="updateUser" parameterType="hashmap">
 		update cn_user set cn_user_token=#{cn_user_token}, cn_user_desc=#{cn_user_desc} where cn_user_name=#{cn_user_name}
