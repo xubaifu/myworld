@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<style type="text/css">
+		table a:hover {color: #FF0000} /* 未访问的链接 */
+		table a:visited {color: #00FF00} /* 已访问的链接 */
+		table a:link {color: #FF00FF} /* 鼠标移动到链接上 */
+		table a:active {color: #0000FF} /* 选定的链接 */
+	</style>
+</head>
+
+<body data-ng-controller="userManageController">
+	<div>
+		<div class="adminPage">
+			<div>
+				<ol class="breadcrumb" id="breadcrumb">
+					<li>控制台</li>
+					<li><a href="#">{{firstMenu}}</a></li>
+					<li class="active">{{secondMenu}}</li>
+				</ol>
+			</div>
+
+			<div id="myTabContent" class="tab-content">
+				<table class="table table-hover">
+					<caption>注册用户</caption>
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>用户名</th>
+							<th>用户类型</th>
+							<th>注册时间</th>
+							<th>详细信息</th>
+							<th>备注</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tr data-ng-repeat="x in users">
+						<td>{{ $index + 1 }}</td>
+						<td>{{ x.cn_user_name }}</td>
+						<td>{{ x.cn_user_token }}</td>
+						<td>{{ x.cn_user_register_time }}</td>
+						<td><a href='javascript:void(0)' data-ng-click="getUserDetail(x)"
+							data-toggle='modal' data-target='#myModal'>点击查看</a></td>
+						<td>{{ x.cn_user_desc }}</td>
+						<td><a href='javascript:void(0)' data-ng-click="updateUserDetail(x)"
+							data-toggle='modal' data-target='#myModal'>管理</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">用户详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-2 control-label">用户名
+						</label>
+						<div class="col-sm-10">
+							<input class="form-control" type="text" data-ng-model="cn_user_name" data-ng-disabled=true><br>
+						</div>
+					</div>
+					<br>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">用户类型</label>
+						<div class="col-sm-10">
+							<select class="form-control" data-ng-model="selected" data-ng-options="x.value as x.name for x in sites" data-ng-disabled="disabled">
+							</select> <br>
+						</div>
+					</div>
+					<br>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">注册时间</label>
+						<div class="col-sm-10">
+							<input class="form-control" type="text" data-ng-model="cn_user_register_time" data-ng-disabled=true><br>
+						</div>
+					</div>
+					<br>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">备注</label>
+						<div class="col-sm-10">
+							<input class="form-control" type="text" data-ng-model="cn_user_desc" data-ng-disabled="disabled"><br>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer-admin">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						关闭</button>
+					<button id="submitButton" type="button" class="btn btn-primary" data-dismiss="modal" data-ng-hide="hide" data-ng-click="submitFun(cn_user_name,selected,cn_user_desc)">
+						提交更改</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="baifu/common/bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="baifu/css/index.css"/>
+	<link rel="stylesheet" href="baifu/css/adminPage.css"/>
+	<script type="text/javascript" src="baifu/js/common/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="baifu/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+	<script src="baifu/js/common/AngularJS-v1.4.6.js"></script>
+	<script src="baifu/js/common/angular-route.js"></script>
+	<script src="baifu/js/common/angular-animate.min.js"></script>
+	<title>ShareOne后台管理</title>
+</head>
+
+<body data-ng-app="adminApp"  data-ng-controller="adminController">
+	<div>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button data-target=".navbar-collapse" data-toggle="collapse"
+						type="button" class="navbar-toggle collapsed">
+						<span class="sr-only"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<div class="header-brand">
+						<a href="javascript:void(0)" class="navbar-brand hidden-sm">ShareOne管理控制台</a>
+					</div>
+				</div>
+				<div class="navbar-collapse collapse" id="headerList">
+					<ul class="nav navbar-nav navbar-right hidden-sm">
+						<li id="loginBtn" class="forHide"><a
+							href="javascript:void(0)">欢迎您，管理员</a></li>
+						<li id="logout" class="forShow"><a href="javascript:void(0)">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 页面左侧导航条 start -->
+		<div class="container_left">
+			<div class="leftsidebar_box">
+				<div class="line"></div>
+				<dl class="system_log">
+					<dt>
+						系统管理<img src="baifu/image/leftMenu/select_xl01.png">
+					</dt>
+					<dd class="first_dd">
+						<a href="#baseData" data-toggle="tab">基础数据</a>
+					</dd>
+					<dd>
+						<a id="articleType" href="#" data-toggle="tab">文章分类</a>
+					</dd>
+				</dl>
+				<dl class="custom">
+					<dt>
+						用户管理<img src="baifu/image/leftMenu/select_xl01.png">
+					</dt>
+					<dd class="first_dd">
+						<a id="registeredUsers" href="#userManage" data-ng-click="getAllUsers()">注册用户</a>
+					</dd>
+				</dl>
+				<dl class="source">
+					<dt>
+						素材库管理<img src="baifu/image/leftMenu/select_xl01.png">
+					</dt>
+					<dd class="first_dd">
+						<a href="#" data-toggle="tab">图片库</a>
+					</dd>
+					<dd>
+						<a href="#" data-toggle="tab">链接库</a>
+					</dd>
+					<!-- <dd><a href="#" data-toggle="tab">推广管理</a></dd> -->
+				</dl>
+				<dl class="statistics">
+					<dt>
+						统计分析<img src="baifu/image/leftMenu/select_xl01.png">
+					</dt>
+					<dd class="first_dd">
+						<a href="#" data-toggle="tab">用户统计</a>
+					</dd>
+					<dd>
+						<a href="#" data-toggle="tab">文章统计</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+
+		<!-- 设置路由 -->
+		<div data-ng-view></div>
+		</div>
+	<script type="text/javascript" src="baifu/js/adminAngularJS.js"></script>
+	<script type="text/javascript" src="baifu/js/leftMenu.js"></script>
+</body>
+</html>
