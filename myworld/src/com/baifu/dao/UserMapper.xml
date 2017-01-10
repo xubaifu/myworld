@@ -28,7 +28,7 @@
 	
 	<select id="loadHeadTitle" resultType="com.baifu.entity.NotebookType">
 		<!-- select t.cn_notebook_type_code,t.cn_notebook_type_name from cn_notebook_type t ORDER BY t.cn_notebook_type_code -->
-			SELECT
+			<!-- SELECT
 				group_concat(t.cn_notebook_code) cn_notebook_code,
 				group_concat(t.cn_notebook_name) cn_notebook_name,
 				t.cn_notebook_type_code cn_notebook_type_code,	
@@ -37,7 +37,12 @@
 				cn_notebook t
 			LEFT JOIN cn_notebook_type t1 ON t.cn_notebook_type_code = t1.cn_notebook_type_code
 			
-			GROUP BY t.cn_notebook_type_code	
+			GROUP BY t.cn_notebook_type_code	 -->
+			select t.cn_notebook_code,t.cn_notebook_name,t.cn_notebook_type_code,t1.cn_notebook_type_name 
+			from cn_notebook t 
+			LEFT JOIN cn_notebook_type t1 
+			on t.cn_notebook_type_code = t1.cn_notebook_type_code
+			ORDER BY t.cn_notebook_type_code
 	</select>
 	
 	<select id="findByUserId" resultType="com.baifu.entity.User" parameterType="string">

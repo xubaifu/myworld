@@ -106,6 +106,7 @@ var loadHeadTitle = {
 						if(result.success){
 							//程序执行成功
 							var list = result.data;
+							/*//采用分组查询时使用以下代码
 							$(list).each(function(index){
 								//拼接各个知识模块
 								var ul = '<ul class="nav navbar-nav">'+
@@ -135,6 +136,41 @@ var loadHeadTitle = {
 									title = encodeURI(encodeURI(title));
 									location.href="allSharePage.jsp?type="+title;
 								});
+							});*/
+							//使用普通通关联查询时使用以下代码
+							//存放文章类型code
+							var arr = [];
+							$(list).each(function(index){
+								console.log($.inArray(this.cn_notebook_type_code, arr));
+								if($.inArray(this.cn_notebook_type_code, arr) == -1){
+									//若该类型未加载则执行以下
+									//拼接各个知识模块
+									var ul = '<ul class="nav navbar-nav">'+
+											'			<li class="dropdown">'+
+											'		<a class="dropdown-toggle" data-toggle="dropdown">'+
+											'			'+this.cn_notebook_type_name+'<b class="caret"></b>'+
+											'		</a>'+
+											'		<ul class="dropdown-menu" id="typeCode'+this.cn_notebook_type_code+'">'+
+											'		</ul>'+
+											'	</li>'+
+											'</ul>'
+									$("#headerList").append(ul);
+								}
+								//拼接文章分类模块
+								var li = '<li id="noteCote'+this.cn_notebook_code+'"><a href="#">'+this.cn_notebook_name+'</a></li><li class="divider"></li>';
+								$("#typeCode"+this.cn_notebook_type_code).append(li);
+								//为头部的各个模块绑定事件
+								$("#typeCode"+this.cn_notebook_type_code+" a").not(".dropdown-toggle").click(function(){
+									var title = $(this).text();
+									//对汉字编码
+									title = encodeURI(encodeURI(title));
+									location.href="allSharePage.jsp?type="+title;
+								});
+								//将code添加到arr数组
+								arr[index] = this.cn_notebook_type_code;
+								
+								
+								
 							});
 							
 						}else{
