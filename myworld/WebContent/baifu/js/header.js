@@ -168,9 +168,6 @@ var loadHeadTitle = {
 								});
 								//将code添加到arr数组
 								arr[index] = this.cn_notebook_type_code;
-								
-								
-								
 							});
 							
 						}else{
